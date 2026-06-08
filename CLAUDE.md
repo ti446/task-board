@@ -4,22 +4,43 @@
 SAMURAIスプリントで制作するタスクボードのWebアプリです。
 
 ## 技術スタック
-- HTML
-- CSS
-- JavaScript
+- **React 18** — UIコンポーネント
+- **Vite 5** — ビルドツール・開発サーバー
+- **JavaScript (JSX)** — 実装言語
+- **CSS Modules（plain CSS）** — スタイリング
+- **localStorage** — タスクデータの永続化
+- **GitHub Actions** — CI/CDパイプライン
+- **GitHub Pages** — ホスティング
 
 ## コーディング規約
 - コメントは日本語で書く
-- 変数名は英語のキャメルケースを使う（例：`userName`、`itemList`）
+- 変数名・関数名は英語のキャメルケースを使う（例：`taskList`、`addTask`）
 - インデントはスペース2文字を使う
+
+## コンポーネントの命名規約
+- コンポーネントファイル名はパスカルケース（例：`App.jsx`、`TaskItem.jsx`）
+- コンポーネント関数名はパスカルケース（例：`function App()`、`function TaskItem()`）
+- CSSクラス名はキャメルケース（例：`taskList`、`addButton`）
+- コンポーネントごとに同名のCSSファイルを対にする（例：`App.jsx` ↔ `App.css`）
 
 ## ファイル構成
 ```
 task-board/
 ├── index.html
-├── style.css
-└── script.js
+├── vite.config.js
+├── package.json
+├── .github/
+│   └── workflows/
+│       └── deploy.yml       # GitHub Pagesへの自動デプロイ
+└── src/
+    ├── main.jsx             # Reactエントリーポイント
+    ├── index.css            # グローバルスタイル
+    ├── App.jsx              # メインコンポーネント
+    └── App.css              # メインコンポーネントのスタイル
 ```
+
+## デプロイ先
+https://ti446.github.io/task-board/
 
 ## Git運用ルール
 
