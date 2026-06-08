@@ -1,9 +1,24 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 
+const STORAGE_KEY = 'taskList'
+
 function App() {
-  const [taskList, setTaskList] = useState([])
+  // 初回のみローカルストレージから復元する
+  const [taskList, setTaskList] = useState(() => {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY)
+      return saved ? JSON.parse(saved) : []
+    } catch {
+      return []
+    }
+  })
   const [inputText, setInputText] = useState('')
+
+  // タスクが変わるたびにローカルストレージへ保存する
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(taskList))
+  }, [taskList])
 
   // タスクを追加する
   const addTask = () => {
